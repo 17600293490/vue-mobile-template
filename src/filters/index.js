@@ -1,4 +1,4 @@
-import { getDate } from './utils'
+import { getDate } from '@/libs/utils'
 import Vue from 'vue'
 const filter = {
   getDate (timeStamp) {

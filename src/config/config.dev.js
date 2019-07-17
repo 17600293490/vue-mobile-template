@@ -10,5 +10,5 @@ export default {
   /**
    * @description 是否启用vConsole 手机调试
    */
-  useVConsole: true
+  useVConsole: false
 }
