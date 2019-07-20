@@ -11,16 +11,11 @@ const baseConfig = {
   /**
    * @description 默认打开的首页的路由name值，默认为home
    */
-  homeName: 'home'
+  homeName: 'home',
   /**
-   * @description 需要加载的插件
+   * @description 是否开启日志收集, false表示不收集
    */
-  // plugin: {
-  //   'error-store': {
-  //     showInHeader: true, // 设为false后不会在顶部显示错误日志徽标
-  //     developmentOff: true // 设为true后在开发环境不会收集错误信息，方便开发中排查错误
-  //   }
-  // }
+  useErrorCollection: false
 }
 // 根据不同开发环境，加载不同的配置信息
 let config

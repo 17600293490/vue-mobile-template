@@ -1,8 +1,7 @@
-import { getDate } from '@/libs/utils'
-import Vue from 'vue'
+import { getDate } from '@/libs/tools.js'
 const filter = {
-  getDate (timeStamp) {
-    return getDate(timeStamp)
+  getDate: function (timeStamp, type) {
+    return getDate(timeStamp, type)
   }
 }
-Object.keys(filter).forEach(key => Vue.filter(key, filter[key]))
+export default filter

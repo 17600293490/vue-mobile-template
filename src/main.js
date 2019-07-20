@@ -1,32 +1,47 @@
 import 'babel-polyfill'
 import Vue from 'vue'
-import './assets/styles/base.css'
-import '@/assets/styles/common.less'
+import App from './App.vue'
 import router from './router'
 import store from './store'
-import api from '@/api'
 import config from './config'
-import './plugin/vant'
+import installPlugin from '@/plugin'
+import filters from '@/filters'
 
-import '@/filters'
+import './assets/styles/base.css'
+import '@/assets/styles/common.less'
 
 import FastClick from 'fastclick'
-import App from './App.vue'
 
 FastClick.attach(document.body)
+// 解决ios点击input 需要多次的问题
+FastClick.prototype.focus = function (targetElement) {
+  targetElement.focus()
+}
 
 if (config.useVConsole) {
   const VConsole = require('vconsole')
   window.vConsole = new VConsole()
 }
-console.log('test')
+
+/**
+ * @description 注入全局过滤器
+ */
+Object.keys(filters).forEach(item => {
+  Vue.filter(item, filters[item])
+})
+
+/**
+ * @description 注册admin内置插件
+ */
+installPlugin(Vue)
+
+/**
+ * @description 生产环境关掉提示
+ */
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  render: h => h(App),
-  created () {
-    api.init(this)
-  }
+  render: h => h(App)
 }).$mount('#app')

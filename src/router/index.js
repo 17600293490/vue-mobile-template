@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import routes from './routers'
 // import store from '@/store'
 // import config from '@/config'
-
+import { setTitle } from '@/libs/util'
 Vue.use(Router)
 const router = new Router({
   routes
@@ -14,6 +14,7 @@ router.beforeEach((to, from, next) => {
   next()
 })
 router.afterEach(to => {
+  setTitle(to, router.app)
   window.scrollTo(0, 0)
 })
 

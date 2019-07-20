@@ -9,6 +9,7 @@ module.exports = {
   configureWebpack: (config) => {
     Object.assign({}, config, {
       resolve: {
+        extensions: ['.js', '.vue', '.json'],
         alias: {
           '@': resolve('src')
         }
